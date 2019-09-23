@@ -1,8 +1,9 @@
+import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
-import RaisedBotton from 'material-ui/RaisedButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { renderComponent } from 'recompose';
+// import { renderComponent } from 'recompose';
 import Axios from 'axios';
 
 class Login extends Component {
@@ -42,7 +43,7 @@ class Login extends Component {
     );
   };
   handleClick(event){
-    var apiBaseUrl = 'http://localhost:4000/api';
+    var apiBaseUrl = 'http://localhost:4000/api/';
     var self = this;
     var payload={
       'email':this.state.username,
@@ -51,13 +52,13 @@ class Login extends Component {
     Axios.post(apiBaseUrl+'login', payload)
     .then(function(response){
       console.log(response);
-      if(response.data.code == 200){
+      if(response.data.code === 200){
         console.log('Login successfull');
         var uploadScreen=[];
-        uploadSceen.push(<UploadScreen appContext={self.props.appContext}/>)
-        self.props.appContext.setState({loginPage:[],uploadSceen:uploadSceen})
+        uploadScreen.push(<uploadScreen appContext={self.props.appContext}/>)
+        self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
       }
-      else if (response.data.code == 204){
+      else if (response.data.code === 204){
         console.log('username password is wrong');
         alert('username password is wrong')
       }

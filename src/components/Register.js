@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
-import RaisedBotton from 'material-ui/RaisedButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
 import Login from './Login.js';
@@ -60,7 +60,7 @@ class Register extends Component{
     }
 
     handleClick(event){
-      var apiBaseUrl = 'http:localhost:4000/api/';
+      var apiBaseUrl = 'http://localhost:4000/api/';
       console.log('value', this.state.first_name, this.state.last_name,
       this.state.email, this.state.password)
 
@@ -71,16 +71,16 @@ class Register extends Component{
         'email':this.state.email,
         'password':this.state.password
       }
-      axios.post(apiBaseUrl+'/register',payload)
+      axios.post(apiBaseUrl+'register',payload)
       .then(function(res){
         console.log(res);
-        if (res.data.code == 200){
+        if (res.data.code === 200){
           console.log('registration successfull');
-          var loginScreen=[];
-          loginScreen.push(<Login parentContext={this}/>);
-          var loginMessage = 'Not registered yet';
+          var loginscreen=[];
+          loginscreen.push(<Login parentContext={this}/>);
+          var loginmessage = 'Not registered yet';
           self.props.parentContext.setState({loginscreen:loginscreen,
-            loginmessage:loginmessage, buttonLabel:'Register',isLogin:True
+            loginmessage:loginmessage, buttonLabel:'Register',isLogin:true
           });
         }
       })

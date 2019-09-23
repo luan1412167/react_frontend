@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+import logo from '../logo.svg';
+import '../styles/App.css';
+import Loginscreen from './Loginscreen'
 
-import './App.css';
-import Loginscreen from '.Loginscreen'
 
 class App extends Component{
   constructor(props){
@@ -33,6 +31,5 @@ class App extends Component{
 const style = {
   margin:15,
 };
-export default App;
 
 export default App;
